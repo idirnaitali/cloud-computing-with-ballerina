@@ -1,0 +1,15 @@
+# IntelliJ
+.idea/
+out/
+classes/
+*.iml
+
+### Ballerina ###
+*.balx
+*.log
+kubernetes/
+docker/
+terget/
+.ballerina/
+*.json
+*target/
