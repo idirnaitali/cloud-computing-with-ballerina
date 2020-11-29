@@ -1,0 +1,48 @@
+##########################################################################################
+##  Test when running as ballerina service (bal run api-gateway)                       ###
+##########################################################################################
+
+# ping ==> should be OK
+GET http://0.0.0.0:9091/api/v1/apigw/ping
+
+###
+
+# warriors ==> should be OK
+GET http://0.0.0.0:9091/api/v1/apigw/warriors
+apikey: Z2FtZTpnYW1lMQ==
+
+###
+
+# warriors ==> should be KO (unauthorized) when messing apikey
+GET http://0.0.0.0:9091/api/v1/apigw/warriors
+
+###
+# warriors ==> should be KO (unauthorized) on invali apikey
+GET http://0.0.0.0:9091/api/v1/apigw/warriors
+apikey: G02TheBeach==
+
+
+##########################################################################################
+#### Test when running as kubernetes service (kubectl apply -f .../apigateway)        ####
+##########################################################################################
+
+# ping ==> should be OK
+GET http://0.0.0.0:9091/api/v1/apigw/ping
+
+###
+
+# warriors ==> should be OK
+GET http://techwatch.io/api/v1/apigw/warriors
+apikey: Z2FtZTpnYW1lMQ==
+
+###
+
+# warriors ==> should be KO (unauthorized) when messing apikey
+GET http://techwatch.io/api/v1/apigw/warriors
+
+###
+# warriors ==> should be KO (unauthorized) on invali apikey
+GET http://techwatch.io/api/v1/apigw/warriors
+apikey: G02TheBeach==
+
+###
